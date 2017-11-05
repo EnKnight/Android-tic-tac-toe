@@ -1,16 +1,21 @@
 package com.example.rafaelaranda.examen2parcial;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MultiplayerActivity extends AppCompatActivity {
   private ImageView iv[] = new ImageView[9], gameOver;
+  private Button restart;
   public static boolean used[] = new boolean[9], winner;
   public static byte turn;
-  public static byte symbol [][] = new byte[3][3];
+  public static  byte symbol [][] = new byte[3][3];
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,8 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     turn = 0;
     winner = false;
+
+    restart = (Button)findViewById(R.id.restart);
     gameOver = (ImageView)findViewById(R.id.gameOver);
 
     iv[0] = (ImageView)findViewById(R.id.boton1);
@@ -41,6 +48,57 @@ public class MultiplayerActivity extends AppCompatActivity {
     iv[7] = (ImageView)findViewById(R.id.boton8);
     iv[8] = (ImageView)findViewById(R.id.boton9);
 
+    restart.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        for(byte i=0; i<9; i++){
+          iv[i].setImageResource(R.drawable.empty);
+          used[i] = false;
+        }
+
+        for(byte i=0; i<3; i++){
+          for(byte j=0; j<3; j++){
+            symbol[i][j] = 0;
+          }
+        }
+        gameOver.setImageResource(R.drawable.empty);
+        turn = 0;
+        winner = false;
+      }
+    });
+
+
+    /*for(x=0; x<3; x++){
+      for(y=0; y<3; y++){
+        contaux++;
+        iv[contaux].setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            if(!used[contaux] && !winner){
+              if(turn == 0){
+                iv[contaux].setImageResource(R.drawable.circle);
+                symbol[x][y] = 1;
+                turn++;
+                used[contaux] = true;
+                winner = checkCircleWinner();
+              } else if(turn%2 == 0){
+                iv[contaux].setImageResource(R.drawable.circle);
+                symbol[x][y] = 1;
+                turn++;
+                used[contaux] = true;
+                winner = checkCircleWinner();
+              } else{
+                iv[contaux].setImageResource(R.drawable.cross);
+                symbol[x][y] = 2;
+                turn++;
+                used[contaux] = true;
+                winner = checkCrossWinner();
+              }
+            }
+          }
+        });
+      }
+    }*/
     iv[0].setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -371,4 +429,5 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     return false;
   }
+
 }
