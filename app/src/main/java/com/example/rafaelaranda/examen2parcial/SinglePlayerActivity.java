@@ -260,11 +260,11 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
   public boolean blockVictory(){
     if(blockHorizon()) {
-      Toast.makeText(this, "Amenaza horizontal bloqueada", Toast.LENGTH_LONG).show();
+      //Toast.makeText(this, "Amenaza horizontal bloqueada", Toast.LENGTH_LONG).show();
       return true;
     } else {
       if(blockVertical()) {
-        Toast.makeText(this, "Amenaza vertical bloqueada", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Amenaza vertical bloqueada", Toast.LENGTH_LONG).show();
         return true;
       }
     }
@@ -273,6 +273,7 @@ public class SinglePlayerActivity extends AppCompatActivity {
 
   public void computersTurn(){
     double randaux;
+    boolean vb = false;
     if(turn == 1){
       if(symbol[1][1] == 1){
         randaux = Math.random() * 10;
@@ -304,7 +305,9 @@ public class SinglePlayerActivity extends AppCompatActivity {
         used[4] = true;
       }
     } else{
-      blockVictory();
+      vb = blockVictory();
+      Toast.makeText(this, "VIctoria tapada: "+vb, Toast.LENGTH_LONG).show();
+      winner = checkCrossWinner();
     }
   }
 
