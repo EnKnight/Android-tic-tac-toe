@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
   private Intent intent;
-  private Button jugarmp;
+  private Button jugarmp, jugarsp;
 
 
   @Override
@@ -17,11 +17,20 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     jugarmp = (Button)findViewById(R.id.jugarmp);
+    jugarsp = (Button)findViewById(R.id.jugarsp);
 
     jugarmp.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         intent = new Intent(MainActivity.this, MultiplayerActivity.class);
+        startActivity(intent);
+      }
+    });
+
+    jugarsp.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        intent = new Intent(MainActivity.this, SinglePlayerActivity.class);
         startActivity(intent);
       }
     });

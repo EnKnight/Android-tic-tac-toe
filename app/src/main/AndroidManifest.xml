@@ -15,7 +15,8 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".MultiplayerActivity"></activity>
+    <activity android:name=".MultiplayerActivity" />
+    <activity android:name=".SinglePlayerActivity"></activity>
   </application>
 
 </manifest>

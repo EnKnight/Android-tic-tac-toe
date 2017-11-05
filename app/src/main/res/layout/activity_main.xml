@@ -14,13 +14,24 @@
     android:layout_height="wrap_content"
     android:text="Bienvenido al gato de sistemas!"
     android:gravity="center"
-    android:id="@+id/bienvenidatxt"/>
+    android:id="@+id/bienvenidatxt"
+    android:layout_centerHorizontal="true"/>
 
   <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Jugar"
+    android:text="Jugar 2 jugadores"
+    android:id="@+id/jugarmp"
     android:layout_below="@+id/bienvenidatxt"
-    android:layout_marginTop="10dp"
-    android:id="@+id/jugarmp"/>
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="100dp" />
+
+  <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/jugarsp"
+    android:text="Jugar 1 jugador"
+    android:layout_below="@id/jugarmp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="25dp"/>
 </RelativeLayout>
